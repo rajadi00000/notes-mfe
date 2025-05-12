@@ -36,7 +36,20 @@ module.exports = {
         search: 'search@http://localhost:3002/remoteEntry.js',
         list: 'list@http://localhost:3003/remoteEntry.js',
       },
-      // shared: packageJSON.dependencies,
+      shared: {
+        react: {
+          singleton: true,
+          requiredVersion: packageJSON.dependencies.react,
+        },
+        'react-dom': {
+          singleton: true,
+          requiredVersion: packageJSON.dependencies['react-dom'],
+        },
+        '@emotion/react': {
+          singleton: true,
+          requiredVersion: packageJSON.dependencies['@emotion/react']
+        }
+      },
     }),
   ],
 };

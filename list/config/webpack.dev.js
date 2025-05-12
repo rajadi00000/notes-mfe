@@ -35,7 +35,20 @@ module.exports = {
       exposes: {
         './ListNotes': './src/bootstrap.js',
       },
-      // shared: packageJSON.dependencies,
+      shared: {
+        react: {
+          singleton: true,
+          requiredVersion: packageJSON.dependencies.react,
+        },
+        'react-dom': {
+          singleton: true,
+          requiredVersion: packageJSON.dependencies['react-dom'],
+        },
+        '@emotion/react': {
+          singleton: true,
+          requiredVersion: packageJSON.dependencies['@emotion/react']
+        }
+      },
     }),
   ],
 };
