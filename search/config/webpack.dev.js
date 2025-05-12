@@ -5,7 +5,7 @@ const packageJSON = require('../package.json');
 module.exports = {
   mode: 'development',
   devServer: {
-    port: 3000,
+    port: 3002,
     historyApiFallback: {
       index: 'index.html',
     },
@@ -35,7 +35,7 @@ module.exports = {
       exposes: {
         './SearchBar': './src/bootstrap.js',
       },
-      shared: packageJSON.dependencies,
+      // shared: packageJSON.dependencies,
     }),
   ],
 };

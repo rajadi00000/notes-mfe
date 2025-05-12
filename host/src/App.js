@@ -1,6 +1,15 @@
 import React from 'react';
-import MarketingApp from './components/MarketingApp';
+import {Box} from "@mui/material"
+import SearchNote from './components/SearchNote'
+import ManageNote from './components/ManageNote'
+import ListNote from './components/ListNote'
 
-export default () => {
-  return <MarketingApp />;
-};
+export default function App() {
+  return (
+    <Box sx={{ padding: 2 }}>
+      <SearchNote />
+      <ManageNote />
+      <ListNote />
+    </Box>
+  );
+}

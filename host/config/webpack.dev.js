@@ -32,9 +32,11 @@ module.exports = {
     new ModuleFederationPlugin({
       name: 'host',
       remotes: {
-        // marketing: 'marketing@http://localhost:8089/remoteEntry.js',
+        manage: 'manage@http://localhost:3001/remoteEntry.js',
+        search: 'search@http://localhost:3002/remoteEntry.js',
+        list: 'list@http://localhost:3003/remoteEntry.js',
       },
-      shared: packageJSON.dependencies,
+      // shared: packageJSON.dependencies,
     }),
   ],
 };
