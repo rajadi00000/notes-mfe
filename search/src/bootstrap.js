@@ -1,10 +1,11 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
+import {createRoot} from 'react-dom/client';
 import App from './App';
 
 // Mount function to start the app
 const mount = (el) => {
-  ReactDOM.render(<App />, el);
+  const root = createRoot(el)
+  root.render(<App />);
 };
 
 // If we are in development and in isolation,
