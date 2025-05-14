@@ -9,7 +9,9 @@ export default () => {
 
     if (data) {
       const notes = JSON.parse(data);
-      const newNotes = notes.filter((note) => note.includes(search));
+      const newNotes = notes.filter((note) =>
+        note.toLowerCase().includes(search.toLowerCase())
+      );
       // Emit custom event for note deletion
       window.dispatchEvent(
         new CustomEvent('notesUpdated', { detail: newNotes })
