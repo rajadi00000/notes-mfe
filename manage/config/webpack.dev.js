@@ -34,6 +34,7 @@ module.exports = {
       filename: 'remoteEntry.js',
       library: { type: 'var', name: 'manage' },
       exposes: {
+        './ManageNotes': './src/bootstrap.js',
         './AddNote': './src/components/AddNote.js',
         './handleDelete': './src/components/handleDelete.js',
       },
