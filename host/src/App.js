@@ -6,7 +6,7 @@ import ListNote from './components/ListNote';
 
 export default function App() {
   return (
-    <Box sx={{ padding: 2 }}>
+    <Box sx={{ padding: 2, width: '80%', margin: 'auto' }}>
       <SearchNote />
       <AddNote />
       <ListNote />

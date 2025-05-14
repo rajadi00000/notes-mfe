@@ -1,5 +1,5 @@
-import React from 'react';
-import { Grid, Card, CardContent, Typography } from '@mui/material';
+import React, { Suspense } from 'react';
+import { Stack, Card, CardContent, Typography } from '@mui/material';
 const DeleteNote = React.lazy(() => import('manage/DeleteNote'));
 
 export default () => {
@@ -42,13 +42,19 @@ export default () => {
   }, []);
 
   return (
-    <div style={{ marginTop: '1rem' }}>
-      <Typography variant='h5' component='div' sx={{ mb: 2 }}>
+    <Stack mt={6} border={'dotted 2px black'}>
+      <Typography
+        variant='h5'
+        mt={4}
+        textAlign={'center'}
+        textTransform={'uppercase'}
+        fontWeight={'bold'}
+      >
         Your Notes
       </Typography>
-      <Grid container spacing={2}>
-        {notes.map((note, index) => (
-          <Grid key={index}>
+      {notes.length ? (
+        notes.map((note, index) => (
+          <Stack key={index}>
             <Card>
               <CardContent>
                 <Typography variant='h6' component='div'>
@@ -62,12 +68,18 @@ export default () => {
                 >
                   Delete
                 </Button> */}
-                <DeleteNote index={index} notes={notes} setNotes={setNotes} />
+                <Suspense fallback={<p>A moment please...</p>}>
+                  <DeleteNote index={index} notes={notes} setNotes={setNotes} />
+                </Suspense>
               </CardContent>
             </Card>
-          </Grid>
-        ))}
-      </Grid>
-    </div>
+          </Stack>
+        ))
+      ) : (
+        <Typography variant='h6' mt={8} mb={4} textAlign={'center'}>
+          Shhh… the notes are sleeping 😴. Add one to wake them up! 😀
+        </Typography>
+      )}
+    </Stack>
   );
 };
