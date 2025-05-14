@@ -42,7 +42,7 @@ export default () => {
   }, []);
 
   return (
-    <Stack mt={6} border={'dotted 2px black'}>
+    <Stack mt={6} gap={2} border={'dotted 2px black'}>
       <Typography
         variant='h5'
         mt={4}
@@ -54,8 +54,8 @@ export default () => {
       </Typography>
       {notes.length ? (
         notes.map((note, index) => (
-          <Stack key={index}>
-            <Card>
+          <Stack key={index} mt={2} mb={2}>
+            <Card sx={{ backgroundColor: '#ffec87', mr: 4, ml: 4 }}>
               <CardContent>
                 <Typography variant='h6' component='div'>
                   {note}
