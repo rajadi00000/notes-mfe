@@ -10,9 +10,15 @@ export default () => {
 
   const handleAdd = () => {
     if (note.trim()) {
-      setNotes([...notes, note]);
+      const updatedNotes = [...notes, note];
+      setNotes(updatedNotes);
       setNote('');
-      localStorage.setItem('notes', JSON.stringify([...notes, note]));
+      localStorage.setItem('notes', JSON.stringify(updatedNotes));
+
+      // Emit custom event for note addition
+      window.dispatchEvent(
+        new CustomEvent('notesUpdated', { detail: updatedNotes })
+      );
     }
   };
 

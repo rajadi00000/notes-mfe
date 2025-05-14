@@ -1,10 +1,6 @@
 import React from 'react';
-import { TextField } from '@mui/material';
+import SearchNote from './components/SearchNote';
 
 export default function App() {
-  return (
-    <div>
-      <TextField label="Search Notes" variant="outlined" fullWidth />
-    </div>
-  );
+  return <SearchNote />;
 }

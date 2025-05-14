@@ -23,6 +23,17 @@ export default () => {
     if (savedNotes) {
       setNotes(JSON.parse(savedNotes));
     }
+
+    // Listen for custom event to update notes
+    const handleNotesUpdated = (event) => {
+      setNotes(event.detail);
+    };
+
+    window.addEventListener('notesUpdated', handleNotesUpdated);
+
+    return () => {
+      window.removeEventListener('notesUpdated', handleNotesUpdated);
+    };
   }, []);
 
   return (
