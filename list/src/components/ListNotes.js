@@ -1,22 +1,27 @@
-import React, { Suspense } from 'react';
-import { Grid, Card, CardContent, Typography, Button } from '@mui/material';
+import React from 'react';
+import { Grid, Card, CardContent, Typography } from '@mui/material';
+const DeleteNote = React.lazy(() => import('manage/DeleteNote'));
 
 export default () => {
   const [notes, setNotes] = React.useState([]);
 
-  const handleDelete = async (index) => {
-    try {
-      // Dynamically import the remote function
-      const { default: remoteDeleteFunction } = await import(
-        'manage/handleDelete'
-      );
+  // THIS IS THE CODE FOR USING Remote Function instead of using Delete component
+  // Works same (except could not solve issue when delete and then adding a note,
+  // the deleted note was getting restored)
 
-      // Now you can use the remoteDeleteFunction
-      remoteDeleteFunction(index, notes, setNotes);
-    } catch (error) {
-      console.error('Error loading remote function:', error);
-    }
-  };
+  // const handleDelete = async (index) => {
+  //   try {
+  //     // Dynamically import the remote function
+  //     const { default: remoteDeleteFunction } = await import(
+  //       'manage/handleDelete'
+  //     );
+
+  //     // Now you can use the remoteDeleteFunction
+  //     remoteDeleteFunction(index, notes, setNotes);
+  //   } catch (error) {
+  //     console.error('Error loading remote function:', error);
+  //   }
+  // };
 
   React.useEffect(() => {
     const savedNotes = localStorage.getItem('notes');
@@ -49,14 +54,15 @@ export default () => {
                 <Typography variant='h6' component='div'>
                   {note}
                 </Typography>
-                <Button
+                {/* <Button
                   onClick={() => handleDelete(index)}
                   variant='contained'
                   color='error'
                   sx={{ mt: 2 }}
                 >
                   Delete
-                </Button>
+                </Button> */}
+                <DeleteNote index={index} notes={notes} setNotes={setNotes} />
               </CardContent>
             </Card>
           </Grid>

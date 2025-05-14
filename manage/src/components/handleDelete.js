@@ -1,3 +1,5 @@
+// function can also be exposed instead of component
+
 const handleDelete = (index, notes, setNotes) => {
   const newNotes = notes.filter((_, i) => i !== index);
   setNotes(newNotes);

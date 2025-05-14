@@ -36,7 +36,8 @@ module.exports = {
       exposes: {
         './ManageNotes': './src/bootstrap.js',
         './AddNote': './src/components/AddNote.js',
-        './handleDelete': './src/components/handleDelete.js',
+        // './handleDelete': './src/components/handleDelete.js',
+        './DeleteNote': './src/components/DeleteNote.js',
       },
       shared: {
         react: {

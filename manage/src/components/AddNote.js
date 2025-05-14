@@ -8,6 +8,20 @@ export default () => {
     return saved ? JSON.parse(saved) : [];
   });
 
+  React.useEffect(() => {
+    // Listen for custom event to update notes
+    const handleNotesUpdated = (event) => {
+      const updatedNotes = [...event.detail];
+      setNotes(updatedNotes);
+    };
+
+    window.addEventListener('notesUpdated', handleNotesUpdated);
+
+    return () => {
+      window.removeEventListener('notesUpdated', handleNotesUpdated);
+    };
+  }, []);
+
   const handleAdd = () => {
     if (note.trim()) {
       const updatedNotes = [...notes, note];
