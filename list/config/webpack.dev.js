@@ -35,6 +35,9 @@ module.exports = {
       exposes: {
         './ListNotes': './src/bootstrap.js',
       },
+      remotes: {
+        manage: 'manage@http://localhost:3001/remoteEntry.js',
+      },
       shared: {
         react: {
           singleton: true,
@@ -46,8 +49,8 @@ module.exports = {
         },
         '@emotion/react': {
           singleton: true,
-          requiredVersion: packageJSON.dependencies['@emotion/react']
-        }
+          requiredVersion: packageJSON.dependencies['@emotion/react'],
+        },
       },
     }),
   ],

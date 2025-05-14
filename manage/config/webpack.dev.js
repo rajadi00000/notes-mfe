@@ -32,8 +32,10 @@ module.exports = {
     new ModuleFederationPlugin({
       name: 'manage',
       filename: 'remoteEntry.js',
+      library: { type: 'var', name: 'manage' },
       exposes: {
-        './ManageNotes': './src/bootstrap.js',
+        './AddNote': './src/components/AddNote.js',
+        './handleDelete': './src/components/handleDelete.js',
       },
       shared: {
         react: {
@@ -46,8 +48,8 @@ module.exports = {
         },
         '@emotion/react': {
           singleton: true,
-          requiredVersion: packageJSON.dependencies['@emotion/react']
-        }
+          requiredVersion: packageJSON.dependencies['@emotion/react'],
+        },
       },
     }),
   ],

@@ -1,23 +1,7 @@
-import React, { useState, useEffect } from 'react';
-import { List, ListItem, ListItemText } from '@mui/material';
+import React from 'react';
+import ListNotes from './components/ListNotes';
+
 
 export default function App() {
-  const [notes, setNotes] = useState([]);
-
-  useEffect(() => {
-    const savedNotes = localStorage.getItem('notes');
-    if (savedNotes) {
-      setNotes(JSON.parse(savedNotes));
-    }
-  }, []);
-
-  return (
-    <List>
-      {notes.map((note, index) => (
-        <ListItem key={index}>
-          <ListItemText primary={note} />
-        </ListItem>
-      ))}
-    </List>
-  );
+  return <ListNotes />;
 }
