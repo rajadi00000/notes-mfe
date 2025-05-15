@@ -24,7 +24,7 @@ export default () => {
       <TextField
         value={search}
         onChange={(e) => setSearch(e.target.value)}
-        label='Search Notes'
+        placeholder='Search Notes'
         variant='outlined'
         fullWidth
       />

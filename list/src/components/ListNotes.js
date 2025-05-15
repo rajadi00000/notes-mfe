@@ -55,7 +55,13 @@ export default () => {
       {notes.length ? (
         notes.map((note, index) => (
           <Stack key={index} mt={2} mb={2}>
-            <Card sx={{ backgroundColor: '#ffec87', mr: 4, ml: 4 }}>
+            <Card
+              sx={{
+                backgroundColor: '#fff8d3',
+                mr: 4,
+                ml: 4,
+              }}
+            >
               <CardContent>
                 <Typography variant='h6' component='div'>
                   {note}

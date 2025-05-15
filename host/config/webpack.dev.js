@@ -23,6 +23,10 @@ module.exports = {
           },
         },
       },
+      {
+        test: /\.css$/i,
+        use: ['style-loader', 'css-loader'],
+      },
     ],
   },
   plugins: [
@@ -47,8 +51,8 @@ module.exports = {
         },
         '@emotion/react': {
           singleton: true,
-          requiredVersion: packageJSON.dependencies['@emotion/react']
-        }
+          requiredVersion: packageJSON.dependencies['@emotion/react'],
+        },
       },
     }),
   ],
