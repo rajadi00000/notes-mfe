@@ -5,6 +5,7 @@ import Toolbar from '@mui/material/Toolbar';
 import IconButton from '@mui/material/IconButton';
 import Typography from '@mui/material/Typography';
 import SearchNote from './SearchNote';
+import NotesIcon from '../../public/images/notes-icon.svg';
 
 export default ({ children }) => {
   return (
@@ -16,19 +17,25 @@ export default ({ children }) => {
             edge='start'
             color='inherit'
             aria-label='open drawer'
-            sx={{ mr: 2 }}
           >
-            <IconButton />
+            <img
+              src={NotesIcon}
+              alt='Notes-MFE'
+              width={'50px'}
+              height={'40px'}
+            />
           </IconButton>
-          <Typography
-            variant='h6'
-            noWrap
-            component='div'
-            sx={{ flexGrow: 1, display: { xs: 'none', sm: 'block' } }}
+          <Typography variant='h6'>Notes-MFE</Typography>
+          <Box
+            sx={{
+              margin: 'auto',
+              display: 'flex',
+              justifyContent: 'center',
+              padding: '5px 0px',
+            }}
           >
-            MUI
-          </Typography>
-          <SearchNote />
+            <SearchNote />
+          </Box>
         </Toolbar>
       </AppBar>
       {children}

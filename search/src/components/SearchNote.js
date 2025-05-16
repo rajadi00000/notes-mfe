@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { TextField, InputAdornment, Button } from '@mui/material';
+import { TextField, InputAdornment } from '@mui/material';
 import searchIcon from '../../public/images/search.svg';
 import clearIcon from '../../public/images/clear.svg';
 
@@ -25,51 +25,67 @@ export default () => {
     setSearch('');
   };
 
+  const focusOnTextField = () => {
+    document.getElementById('search-note').focus();
+  };
+
   return (
-    <div>
-      <TextField
-        title='Search Notes'
-        sx={{
-          background: 'white',
-          '& .MuiOutlinedInput-root': {
-            '& fieldset': {
-              borderColor: 'white', // Default border color
-            },
-            '&:hover fieldset': {
-              borderColor: 'white', // On hover
-            },
-            '&.Mui-focused fieldset': {
-              borderColor: 'white', // On focus
-            },
+    <TextField
+      title='Search Notes'
+      sx={{
+        background: 'white',
+        '& .MuiOutlinedInput-root': {
+          '& fieldset': {
+            borderColor: 'white', // Default border color
           },
-        }}
-        slotProps={{
-          input: {
-            startAdornment: (
-              <InputAdornment position='start'>
-                <img
-                  title='Search'
-                  src={searchIcon}
-                  alt='search'
-                  width={'20px'}
-                />
-              </InputAdornment>
-            ),
-            endAdornment: (
-              <InputAdornment position='end'>
-                <Button title='Clear' onClick={handleClearButton}>
-                  <img src={clearIcon} alt='clear' width={'20px'} />
-                </Button>
-              </InputAdornment>
-            ),
+          '&:hover fieldset': {
+            borderColor: 'white', // On hover
           },
-        }}
-        value={search}
-        onChange={(e) => setSearch(e.target.value)}
-        placeholder='Search Notes'
-        variant='outlined'
-        fullWidth
-      />
-    </div>
+          '&.Mui-focused fieldset': {
+            borderColor: 'white', // On focus
+          },
+        },
+        width: '200%',
+      }}
+      slotProps={{
+        input: {
+          startAdornment: (
+            <InputAdornment position='start'>
+              <img
+                onClick={focusOnTextField}
+                title='Search'
+                src={searchIcon}
+                alt='search'
+                width={'20px'}
+              />
+            </InputAdornment>
+          ),
+          endAdornment: (
+            <InputAdornment
+              position='end'
+              sx={{
+                display: search === '' ? 'none' : 'block',
+                '&:hover': {
+                  cursor: 'pointer',
+                },
+              }}
+            >
+              <img
+                onClick={handleClearButton}
+                src={clearIcon}
+                alt='clear'
+                width={'20px'}
+              />
+            </InputAdornment>
+          ),
+        },
+      }}
+      value={search}
+      onChange={(e) => setSearch(e.target.value)}
+      placeholder='Search Notes'
+      variant='outlined'
+      fullWidth
+      id='search-note'
+    />
   );
 };
