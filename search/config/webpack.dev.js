@@ -10,6 +10,9 @@ module.exports = {
       index: 'index.html',
     },
   },
+  output: {
+    publicPath: 'auto',
+  },
   module: {
     rules: [
       {
@@ -22,6 +25,10 @@ module.exports = {
             plugins: ['@babel/plugin-transform-runtime'],
           },
         },
+      },
+      {
+        test: /\.(png|jpg|gif|svg)$/,
+        type: 'asset/resource',
       },
     ],
   },
@@ -46,8 +53,8 @@ module.exports = {
         },
         '@emotion/react': {
           singleton: true,
-          requiredVersion: packageJSON.dependencies['@emotion/react']
-        }
+          requiredVersion: packageJSON.dependencies['@emotion/react'],
+        },
       },
     }),
   ],
