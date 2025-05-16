@@ -31,7 +31,7 @@ export default ({ children }) => {
               margin: 'auto',
               display: 'flex',
               justifyContent: 'center',
-              padding: '5px 0px',
+              padding: '10px 0px',
             }}
           >
             <SearchNote />
