@@ -19,7 +19,7 @@ export default () => {
   }, []);
 
   if (error) {
-    return <div>Search functionality is currently unavailable.</div>;
+    return <div>List functionality is currently unavailable.</div>;
   }
 
   return <div ref={ref} />;
