@@ -1,12 +1,26 @@
-import React from 'react';
-import { mount } from 'search/SearchBar';
+import React, { useEffect, useRef, useState } from 'react';
 
 export default () => {
-  const ref = React.useRef(null);
+  const ref = useRef(null);
+  const [error, setError] = useState(false);
 
-  React.useEffect(() => {
-    mount(ref.current);
+  useEffect(() => {
+    const loadRemote = async () => {
+      try {
+        const { mount } = await import('search/SearchBar');
+        mount(ref.current);
+      } catch (err) {
+        console.error('Failed to load the Search microfrontend:', err);
+        setError(true);
+      }
+    };
+
+    loadRemote();
   }, []);
+
+  if (error) {
+    return <div>Search functionality is currently unavailable.</div>;
+  }
 
   return <div ref={ref} />;
 };

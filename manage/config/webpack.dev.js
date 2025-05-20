@@ -38,6 +38,9 @@ module.exports = {
         // './handleDelete': './src/components/handleDelete.js',
         './DeleteNote': './src/components/DeleteNote.js',
       },
+      remotes: {
+        list: 'list@http://localhost:3003/remoteEntry.js',
+      },
       shared: {
         react: {
           singleton: true,

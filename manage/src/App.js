@@ -1,6 +1,6 @@
 import React from 'react';
-import AddNote from './components/AddNote';
+import ShowUI from './components/ShowUI';
 
 export default function App() {
-  return <AddNote />;
+  return <ShowUI />;
 }
